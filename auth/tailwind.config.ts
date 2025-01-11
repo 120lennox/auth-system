@@ -14,6 +14,9 @@ export default {
       },
       fontFamily: {
         poppins : ["Poppins", "sans-serif"],
+      },
+      backgroundImage: {
+        "image": "url('/tools/background.svg')"
       }
     },
   },

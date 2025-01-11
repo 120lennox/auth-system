@@ -1,8 +1,8 @@
 import Link from "next/link"
 
 export default function NavBar(){
-    return <div className="fixed top-0 bg-white w-full shadow-sm">
-        <div className="mx-8 mt-5">
+    return <div className="fixed top-0 bg-white w-full py-1">
+        <div className="mx-8 mt-4">
             <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row items-center space-x-5">
                     <div className="h-[40px] w-[40] bg-slate-300 rounded-full"></div>

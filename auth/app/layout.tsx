@@ -31,7 +31,9 @@ export default function RootLayout({
         <div>
           <NavBar />
         </div>
-        {children}
+        <div className="bg-image bg-center bg-no-repeat w-full h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );
