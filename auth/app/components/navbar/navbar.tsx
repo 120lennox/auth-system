@@ -17,10 +17,10 @@ export default function NavBar(){
                         <input className="border rounded-full text-center py-1 px-2" type="text" placeholder="search" />
                     </div>
                     <div>
-                        <Link href="/login">Sign up</Link>
+                        <Link href="/signup">Sign up</Link>
                     </div>
                     <div>
-                        <Link href="/signup">Login</Link>
+                        <Link href="/login">Login</Link>
                     </div>
                 </div>
             </div>
