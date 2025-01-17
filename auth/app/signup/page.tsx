@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link"
 // import PasswordstrengthChecker from "./passwordStrengthChecker"
 import { useState } from "react"
@@ -35,7 +36,7 @@ export default function signup(){
     // jsx code here
     return <div>
         <div className="flex justify-center items-center h-screen">
-            <div className="bg-white w-[455] h-[491] rounded-2xl flex flex-col items-center">
+            <div className="bg-white w-[555] min-h-[491] rounded-2xl flex flex-col items-center">
                 <div className="flex flex-row w-full max-w-[450] px-10 py-2 rounded-xl mt-8">
                     <div className="bg-cyan py-2 w-1/2 rounded-l-xl ">
                         <Link className="text-center flex justify-center items-center text-white" href="/signup">Sign Up</Link>
@@ -44,20 +45,20 @@ export default function signup(){
                         <Link className="flex justify-center items-center text-white" href="/">Login</Link>
                     </div>
                 </div>
-                <div className="text-[23px] mt-5 font-medium">Signup</div>
-                <div className="">
-                    <Link href="">Sign up with  Facebook</Link>
+                <div className="text-[22px] text-gray mt-5 font-medium">Signup</div>
+                <div className="mt-5 border border-gray rounded-2xl px-14 py-2 cursor-pointer">
+                    <Link href="" className="text-gray text-sm">Sign up with  Facebook</Link>
                 </div>
-                <div>
-                    <Link href="">Signup with Google</Link>
+                <div className="mt-5 border border-gray rounded-2xl px-16 py-2 cursor-pointer">
+                    <Link href="" className="text-gray text-sm">Signup with Google</Link>
                 </div>
-                <div>
-                        <div><hr /></div>
+                <div className="mt-5 flex flex-row justify-between items-center space-x-5">
+                        <div>< hr className="w-20 h-px bg-gray-300" /></div>
                         <div>or</div>
-                        <div><hr /></div>
+                        <div><hr className="w-20 h-px bg-gray-300"  /></div>
                 </div>
-                <form action="">
-                    <div>
+                <form action="" className="mt-5 flex flex-col space-y-5">
+                    <div className="flex flex-row justify-center items-center">
                         <div>
                             <label htmlFor="first-name">First Name</label>
                             <input type="text" id="first-name" />
@@ -89,12 +90,13 @@ export default function signup(){
                         {
                             Object.entries(strength).map(([key,value]) =>(
                                 <div key={key} className={`flex items-center ${value ? 'text-green-500' : 'text-red-500'}`}>
+                                    {value ? '✓' : '✗'}
                                     <span>
                                         {key === 'hasLength' && 'At least 8 characters'}
                                         {key === 'hasUpper' && 'At least one uppercase letter'}
                                         {key === 'hasLower' && 'At least one lowercase letter'}
                                         {key === 'hasNumber' && 'At least one number'}
-                                        {key === 'hasSpecial' && 'At least one special character'}
+                                        {key === 'hasSpecialChar' && 'At least one special character'}
                                     </span>
                                 </div>
                             ))

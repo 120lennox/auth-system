@@ -11,7 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        cyan: "#00C0A6"
+        cyan: "#00C0A6",
+        gray: "#333333"
       },
       fontFamily: {
         poppins : ["Poppins", "sans-serif"],
