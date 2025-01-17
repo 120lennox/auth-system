@@ -1,7 +1,38 @@
 import Link from "next/link"
+// import PasswordstrengthChecker from "./passwordStrengthChecker"
+import { useState } from "react"
 
 
 export default function signup(){
+
+    const [password, setPassword] = useState('')
+    const [strength, setStrength] = useState({
+        hasLength: false,
+        hasUpper: false,
+        hasLower: false,
+        hasNumber: false,
+        hasSpecialChar: false
+    })
+
+    // check password in change(whenever user types)
+
+    const checkStrength = (newPassword)=>{
+        setStrength({
+            hasLength: newPassword.length > 8,
+            hasUpper: /[A-Z]/.test(newPassword),
+            hasLower: /[a-z]/.test(newPassword),
+            hasNumber: /\d/.test(newPassword),
+            hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(newPassword)
+        })
+    }
+
+    const handlePasswordChange = (e) =>{
+        const newPassword = e.target.value
+        setPassword(newPassword)
+        checkStrength(newPassword)
+    }
+
+    // jsx code here
     return <div>
         <div className="flex justify-center items-center h-screen">
             <div className="bg-white w-[455] h-[491] rounded-2xl flex flex-col items-center">
@@ -42,11 +73,32 @@ export default function signup(){
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" />
+                        <input
+                         type="password" 
+                         id="password"
+                         value={password}
+                         onChange={handlePasswordChange}
+                         placeholder="Enter password"
+                         />
                     </div>
                     <div>
                         <label htmlFor="password-confirm">Confirm password</label>
-                        <input type="password" id="password" />
+                        <input type="password" id="password" placeholder="Confirm password" />
+                    </div>
+                    <div>
+                        {
+                            Object.entries(strength).map(([key,value]) =>(
+                                <div key={key} className={`flex items-center ${value ? 'text-green-500' : 'text-red-500'}`}>
+                                    <span>
+                                        {key === 'hasLength' && 'At least 8 characters'}
+                                        {key === 'hasUpper' && 'At least one uppercase letter'}
+                                        {key === 'hasLower' && 'At least one lowercase letter'}
+                                        {key === 'hasNumber' && 'At least one number'}
+                                        {key === 'hasSpecial' && 'At least one special character'}
+                                    </span>
+                                </div>
+                            ))
+                        }
                     </div>
                     <div>
                         <button>Signup</button>
