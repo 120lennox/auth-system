@@ -1,10 +1,12 @@
 'use client'
+import axios from "axios"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 
 
 export default function signup() {
+    const router = useRouter()
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('')
@@ -34,7 +36,22 @@ export default function signup() {
     }
 
     const handleSubmit = async()=>{
-        const response = 
+        const userdata = {name: username, email, password, confirmPassword}
+
+        try{
+            const response = await axios.post(
+                "http://127.0.0.1:8000/api/dj-rest-auth/registration/", 
+                userdata
+            )
+            
+            if (response){
+                router.push('/login')
+            }
+        }catch(error){
+            console.log(error)
+        }
+
+        
     }
 
 
@@ -43,7 +60,7 @@ export default function signup() {
             <div className="bg-white text-slate-800 shadow-lg w-[552] mx-h-[838] rounded-2xl">
                 <div className="flex flex-col space-y-5 py-5">
                     <div className="text-[24px] font-medium text-center">Create an account</div>
-                    <form className="flex flex-col space-y-3 px-5" action="">
+                    <form onSubmit={handleSubmit} className="flex flex-col space-y-3 px-5" action="">
                         <div className="flex flex-col">
                             <label htmlFor="username">Username</label>
                             <input
@@ -134,7 +151,7 @@ export default function signup() {
                             </div>
                         </div>
                         <div className="bg-cyan rounded-2xl py-1 cursor-pointer flex justify-center items-center">
-                            <button className="py-1 text-white font-medium">Sign in</button>
+                            <button type="submit" className="py-1 text-white font-medium">Sign in</button>
                         </div>
                     </form>
                     <div className="text-center text-xs text-slate-600">
