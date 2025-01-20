@@ -34,85 +34,31 @@ export default function signup(){
     }
 
     // jsx code here
-    return <div>
-        <div className="z-50 flex justify-center items-center h-screen">
-            <div className="bg-white w-[550] min-h-[491] rounded-2xl flex flex-col items-center">
-                <div className="flex flex-row w-full max-w-[450] px-10 py-2 rounded-xl mt-8">
-                    <div className="bg-cyan py-2 w-1/2 rounded-l-xl ">
-                        <Link className="text-center flex justify-center items-center text-white" href="/signup">Sign Up</Link>
+    return <div className="flex justify-center items-center h-screen text-sm">
+        <div className="bg-white shadow-lg w-[552] mx-h-[838] rounded-2xl">
+            <div className="flex flex-col space-y-5 py-5">
+                <div className="text-[24px] font-medium text-center">Create an account</div>
+                <form className="flex flex-col space-y-3 px-5" action="">
+                    <div className="flex flex-col">
+                        <label htmlFor="username">Username</label>
+                        <input className="border border-slate-300 rounded-2xl py-2 text-center" type="text" id="username" placeholder="Enter username" />
                     </div>
-                    <div className="bg-slate-400 w-1/2 py-2 rounded-r-xl">
-                        <Link className="flex justify-center items-center text-white" href="/">Login</Link>
+                    <div className="flex flex-col">
+                        <label htmlFor="email">Email</label>
+                        <input className="border border-slate-300 rounded-2xl py-2 text-center" type="text" placeholder="Enter your email" />
                     </div>
-                </div>
-                <div className="text-[22px] text-gray mt-4 font-medium">Signup</div>
-                <div className="mt-5 border border-gray rounded-3xl px-[8rem] py-3 cursor-pointer shadow-lg">
-                    <Link href="" className="text-gray text-sm">Sign up with  Facebook</Link>
-                </div>
-                <div className="mt-5 border border-gray rounded-3xl px-[8.7rem] py-3 cursor-pointer shadow-lg">
-                    <Link href="" className="text-gray text-sm">Signup with Google</Link>
-                </div>
-                <div className="mt-5 flex flex-row justify-between items-center space-x-5">
-                        <div>< hr className="w-[11rem] h-px bg-gray-300" /></div>
-                        <div className="text-gray text-sm">or</div>
-                        <div><hr className="w-[11rem] h-px bg-gray-300"  /></div>
-                </div>
-                <form action="" className="mt-5 flex flex-col space-y-3">
-                    <div className="flex flex-row justify-between -space-x-12 items-center">
-                        <div className="ml-14">
-                            <label htmlFor="first-name" className="text-sm">First Name</label>
-                            <input className="border border-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-cyan px-1 py-2 rounded-xl text-center " type="text" id="first-name" placeholder="Enter your first name" />
-                        </div>
-                        <div>
-                            <label className="text-sm" htmlFor="last-name">Last Name</label>
-                            <input className="border border-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-cyan px-1 py-2 rounded-xl text-center" type="text" id="last-name" placeholder="Enter your last name" />
-                        </div>
+                    <div className="flex flex-col">
+                        <label htmlFor="password">Password</label>
+                        <input className="border border-slate-300 rounded-2xl py-2 text-center" type="password" placeholder="Enter your password" />
                     </div>
-                    <div className="flex flex-col w-[27.6rem] ml-14">
-                        <label className="text-sm" htmlFor="email">Email</label>
-                        <input className="border border-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-cyan py-2 rounded-xl text-center" type="text" id="email" placeholder="Enter your email" />
+                    <div className="flex flex-col">
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input className="border border-slate-300 rounded-2xl py-2 text-center" type="password" placeholder="Confirm your password" />
                     </div>
-                    <div className="flex flex-row justify-center items-center gap-3">
-                        <div className="ml-14">
-                            <label className="text-sm" htmlFor="password">Password</label>
-                            <input
-                            className="border border-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-cyan px-1 py-2 rounded-xl text-center"
-                            type="password" 
-                            id="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder="Enter password"
-                            />
-                        </div>
-                        <div>
-                            <label className="text-sm" htmlFor="password-confirm">Confirm password</label>
-                            <input
-                            className="border border-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-cyan px-1 py-2 rounded-xl text-center"
-                             type="password" 
-                             id="password" 
-                             placeholder="Confirm password" />
-                        </div>
-                    </div>
-                    <div className="ml-14 text-sm">
-                        {
-                            Object.entries(strength).map(([key,value]) =>(
-                                <div key={key} className={`flex items-center ${value ? 'text-green-500' : 'text-red-500'}`}>
-                                    {value ? '✓' : '✗'}
-                                    <span className="text-sm">
-                                        {key === 'hasLength' && 'At least 8 characters'}
-                                        {key === 'hasUpper' && 'At least one uppercase letter'}
-                                        {key === 'hasLower' && 'At least one lowercase letter'}
-                                        {key === 'hasNumber' && 'At least one number'}
-                                        {key === 'hasSpecialChar' && 'At least one special character'}
-                                    </span>
-                                </div>
-                            ))
-                        }
-                    </div>
-                    <div className="bg-cyan rounded-3xl cursor-pointer py-2 w-[27.6rem] justify-center items-center ml-14 mb-5">
-                        <button className="text-white text-sm ">Signup</button>
-                    </div>
+                    <div></div>
+                    <div></div>
                 </form>
+                <div></div>
             </div>
         </div>
     </div>
