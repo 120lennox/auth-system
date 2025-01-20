@@ -1,9 +1,14 @@
 'use client'
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 
+
 export default function signup() {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [strength, setStrength] = useState({
         hasLength: false,
         hasUpper: false,
@@ -28,6 +33,11 @@ export default function signup() {
         checkStrength(newPassword)
     }
 
+    const handleSubmit = async()=>{
+        const response = 
+    }
+
+
     return (
         <div className="flex justify-center items-center h-screen text-sm mt-10 duration-300 ease-in-out">
             <div className="bg-white text-slate-800 shadow-lg w-[552] mx-h-[838] rounded-2xl">
@@ -40,6 +50,7 @@ export default function signup() {
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center "
                                 type="text"
                                 id="username"
+                                value={username}
                                 placeholder="e.g john doe" />
                         </div>
                         <div className="flex flex-col">
@@ -47,6 +58,7 @@ export default function signup() {
                             <input
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center" 
                                 type="text"
+                                value={email}
                                 placeholder="e.g john.doe@example.com"
                                 
                                 />
@@ -64,7 +76,8 @@ export default function signup() {
                             <label htmlFor="confirmPassword">Confirm Password</label>
                             <input
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center"
-                                type="password" 
+                                type="password"
+                                value={confirmPassword}
                                 placeholder="Confirm your password" />
                         </div>
                         {/* <div className="">
