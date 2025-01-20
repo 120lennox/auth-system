@@ -30,7 +30,7 @@ export default function signup() {
 
     return (
         <div className="flex justify-center items-center h-screen text-sm mt-10 duration-300 ease-in-out">
-            <div className="bg-white shadow-lg w-[552] mx-h-[838] rounded-2xl">
+            <div className="bg-white text-slate-800 shadow-lg w-[552] mx-h-[838] rounded-2xl">
                 <div className="flex flex-col space-y-5 py-5">
                     <div className="text-[24px] font-medium text-center">Create an account</div>
                     <form className="flex flex-col space-y-3 px-5" action="">
@@ -54,13 +54,18 @@ export default function signup() {
                         <div className="flex flex-col">
                             <label htmlFor="password">Password</label>
                             <input
-                                className="borderborder-slate-300 rounded-2xl py-2 text-center"
+                                className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center"
                                 type="password"
+                                value={password}
+                                onChange={handlePasswordChange}
                                 placeholder="Enter your password" />
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input className="border border-slate-300 rounded-2xl py-2 text-center" type="password" placeholder="Confirm your password" />
+                            <input
+                                className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center"
+                                type="password" 
+                                placeholder="Confirm your password" />
                         </div>
                         {/* <div className="">
                             {

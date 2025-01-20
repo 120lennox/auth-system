@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export default function NavBar(){
-    return <div className="fixed top-0 bg-white w-full py-1">
+    return <div className="fixed top-0 bg-white text-slate-700 w-full py-1">
         <div className="mx-8 mt-4">
             <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row items-center space-x-5">
@@ -14,7 +14,7 @@ export default function NavBar(){
 
                 <div className="flex flex-row justify-between items-center space-x-5">
                     <div className="">
-                        <input className="border rounded-full text-center py-1 px-2" type="text" placeholder="search" />
+                        <input className="border border-slate-300 focus:outline-none focus:ring-1 focus:ring-cyan rounded-full text-center py-1 px-2" type="text" placeholder="search" />
                     </div>
                     <div>
                         <Link href="/signup">Sign up</Link>
