@@ -36,7 +36,7 @@ export default function login(){
                         <div className="h-px bg-slate-500 w-[200px]" ><hr /></div>
                     </div>
                     <div className="bg-white border border-slate-400 py-2 rounded-2xl text-center">Continue with google</div>
-                    <div className="flex flex-row space-x-2">
+                    <div className="flex flex-row space-x-2 justify-center items-center">
                         <p>Already have an account?</p>
                         <Link href="/signup">Signup</Link>
                     </div>
