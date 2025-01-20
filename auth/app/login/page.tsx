@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function login(){
     return <div>
         <div className="flex justify-center items-center h-screen text-sm mt-10 duration-300 ease-in-out">
@@ -28,15 +30,15 @@ export default function login(){
                         </div>
                     </form>
                     
-                    <div className="flex flex-row">
-                        <div><hr /></div>
+                    <div className="flex flex-row justify-between items-center">
+                        <div><hr className="h-px bg-slate-500 w-[200px]" /></div>
                         <div>or</div>
-                        <div><hr /></div>
+                        <div className="h-px bg-slate-500 w-[200px]" ><hr /></div>
                     </div>
-                    <div>continue with google</div>
-                    <div>
+                    <div className="bg-white border border-slate-400 py-2 rounded-2xl text-center">Continue with google</div>
+                    <div className="flex flex-row space-x-2">
                         <p>Already have an account?</p>
-                        <button>Signup</button>
+                        <Link href="/signup">Signup</Link>
                     </div>
                 </div>
             </div>
