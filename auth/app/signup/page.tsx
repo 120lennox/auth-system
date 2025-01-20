@@ -109,8 +109,8 @@ export default function signup(){
                             ))
                         }
                     </div>
-                    <div className="bg-cyan rounded-3xl cursor-pointer py-2">
-                        <button>Signup</button>
+                    <div className="bg-cyan rounded-3xl cursor-pointer py-2 w-[27.6rem] justify-center items-center ml-14 mb-5">
+                        <button className="text-white text-sm ">Signup</button>
                     </div>
                 </form>
             </div>
