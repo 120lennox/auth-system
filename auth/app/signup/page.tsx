@@ -37,7 +37,11 @@ export default function signup() {
     }
 
     const handleSubmit = async()=>{
-        const userdata = {name: username, email, password, confirmPassword}
+        const userdata = {  
+                            username: username,
+                            email: email, 
+                            password1: password, 
+                            password2: confirmPassword}
 
         try{
             const response = await axios.post(
@@ -68,6 +72,7 @@ export default function signup() {
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center "
                                 type="text"
                                 id="username"
+                                onChange={(e)=>setUsername(e.target.value)}
                                 value={username}
                                 placeholder="e.g john doe" />
                         </div>
@@ -76,6 +81,7 @@ export default function signup() {
                             <input
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center" 
                                 type="text"
+                                onChange={(e) =>setEmail(e.target.value)}
                                 value={email}
                                 placeholder="e.g john.doe@example.com"
                                 
@@ -95,6 +101,7 @@ export default function signup() {
                             <input
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan rounded-2xl py-2 text-center"
                                 type="password"
+                                onChange={(e)=>setConfirmPassword(e.target.value)}
                                 value={confirmPassword}
                                 placeholder="Confirm your password" />
                         </div>
