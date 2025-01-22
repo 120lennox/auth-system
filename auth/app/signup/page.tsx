@@ -35,13 +35,14 @@ export default function signup() {
         setPassword(newPassword)
         checkStrength(newPassword)
     }
-
-    const handleSubmit = async()=>{
+// 120@testUser
+    const handleSubmit = async(e)=>{
+        e.preventDefault()
         const userdata = {  
-                            username: username,
-                            email: email, 
-                            password1: password, 
-                            password2: confirmPassword}
+                        username: username,
+                        email: email, 
+                        password1: password, 
+                        password2: confirmPassword}
 
         try{
             const response = await axios.post(
@@ -49,14 +50,12 @@ export default function signup() {
                 userdata
             )
             
-            if (response){
+            if (response.status === 201){
                 router.push('/login')
             }
         }catch(error){
-            console.log(error)
+            console.log(error.response?.data || error)
         }
-
-        
     }
 
 
