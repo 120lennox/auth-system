@@ -1,12 +1,13 @@
 'use client'
 import axios from "axios"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 
 export default function signup() {
     const router = useRouter()
+
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState('')
