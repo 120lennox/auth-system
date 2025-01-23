@@ -20,6 +20,16 @@ export default function signup() {
         hasSpecialChar: false
     })
 
+    //error handling
+    const [usernameError, setUsernameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+    const validateEmail = (email:string) =>{
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
+
     const checkStrength = (newPassword: string) => {
         setStrength({
             hasLength: newPassword.length > 8,
@@ -38,23 +48,49 @@ export default function signup() {
 // 120@testUser
     const handleSubmit = async(e)=>{
         e.preventDefault()
-        const userdata = {  
-                        username: username,
-                        email: email, 
-                        password1: password, 
-                        password2: confirmPassword}
 
-        try{
-            const response = await axios.post(
-                "http://127.0.0.1:8000/api/dj-rest-auth/registration/", 
-                userdata
-            )
-            
-            if (response.status === 201){
-                router.push('/login')
+
+        let isValid = true
+
+        if (!username.trim()){
+            setUsernameError('username required')
+            isValid = false
+        }
+
+        if (!email.trim()){
+            setEmailError('email required')
+            isValid = false
+        }
+
+        if (!password.trim()){
+            setPasswordError('password required')
+            isValid = false
+        }
+
+        if (!(password === confirmPassword)){
+            setConfirmPasswordError('passwords do not match')
+            isValid = false
+        }
+
+        if (isValid){
+            const userdata = {  
+                username: username,
+                email: email, 
+                password1: password, 
+                password2: confirmPassword}
+
+            try{
+                const response = await axios.post(
+                    "http://127.0.0.1:8000/api/dj-rest-auth/registration/", 
+                    userdata
+                )
+                
+                if (response.status === 201){
+                    router.push('/login')
+                }
+            }catch(error){
+                console.log(error.response?.data || error)
             }
-        }catch(error){
-            console.log(error.response?.data || error)
         }
     }
 
@@ -74,6 +110,9 @@ export default function signup() {
                                 onChange={(e)=>setUsername(e.target.value)}
                                 value={username}
                                 placeholder="e.g john doe" />
+                            {
+                                usernameError && <p className="text-red-500 text-sm">{usernameError}</p>
+                            }
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="email">Email</label>
@@ -85,6 +124,9 @@ export default function signup() {
                                 placeholder="e.g john.doe@example.com"
                                 
                                 />
+                            {
+                                emailError && <p className="text-red-500 text-sm">{emailError}</p>
+                            }
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="password">Password</label>
@@ -94,6 +136,10 @@ export default function signup() {
                                 value={password}
                                 onChange={handlePasswordChange}
                                 placeholder="Enter your password" />
+                            
+                            {
+                                passwordError && <p className="text-red-500 text-sm">{passwordError}</p>
+                            }
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="confirmPassword">Confirm Password</label>
@@ -103,6 +149,10 @@ export default function signup() {
                                 onChange={(e)=>setConfirmPassword(e.target.value)}
                                 value={confirmPassword}
                                 placeholder="Confirm your password" />
+                            
+                            {
+                                confirmPasswordError && <p className="text-red-500 text-sm">{confirmPasswordError}</p>
+                            }
                         </div>
                         {/* <div className="">
                             {
