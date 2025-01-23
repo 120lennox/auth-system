@@ -8,7 +8,7 @@ import axios from "axios"
 export default function login(){
     const router = useRouter()
 
-    const [email_username, setEmail] = useState("")
+    const [email_username, setEmail_Username] = useState("")
     const [password, setPassword] = useState("")
 
     //error handling
@@ -64,15 +64,21 @@ export default function login(){
                             <label className="" htmlFor="email/username">Email or Username</label>
                             <input
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan py-2 text-center rounded-2xl"
-                                type="text" 
+                                type="text"
+                                onChange={(e)=>setEmail_Username(e.target.value)}
+                                value={email_username}
                                 id="email/username" 
-                                placeholder="Enter your email ot username" />
+                                placeholder="Enter your email or username" />
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="password">Password</label>
                             <input 
                                 className="border border-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan py-2 text-center rounded-2xl"
-                                type="text" id="password" placeholder="Enter your password" />
+                                type="password"
+                                onChange={(e)=>setPassword(e.target.value)}
+                                value={password} 
+                                id="password" 
+                                placeholder="Enter your password" />
                         </div>
                         <div className="flex flex-row space-x-2">
                             <input type="checkbox" />
