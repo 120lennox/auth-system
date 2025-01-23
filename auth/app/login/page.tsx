@@ -43,13 +43,13 @@ export default function login(){
             }
 
             try{
-                const response = await axios.post('http://127.0.0.1:8000/api-auth/login/', userdata)
+                const response = await axios.post('http://127.0.0.1:8000/api/dj-rest-auth/login/', userdata)
                 console.log(response.data)
-                if (response.status === 201){
+                if (response.status === 200){
                     router.push('/')
                 }
             }catch(error){
-                console.log(error)
+                console.log(error.response?.status)
             }
         }
     }
@@ -59,7 +59,7 @@ export default function login(){
             <div className="bg-white text-slate-800 shadow-lg w-[552] mx-h-[838] rounded-2xl">
                 <div className="flex flex-col mx-5 space-y-5 py-5">
                     <div className="text-center text-[24px] font-medium">Login</div>
-                    <form className="flex flex-col space-y-5" action="">
+                    <form onSubmit={handleSubmission} className="flex flex-col space-y-5" action="">
                         <div className="flex flex-col">
                             <label className="" htmlFor="email/username">Email or Username</label>
                             <input
@@ -85,7 +85,7 @@ export default function login(){
                             <label htmlFor="policy">By creating an account, I agree to our Terms of use and Privacy Policy </label>
                         </div>
                         <div className="bg-cyan py-1 rounded-2xl cursor-pointer flex justify-center items-center">
-                            <button className="text-white text-center py-1">Login</button>
+                            <button type="submit" className="text-white text-center py-1">Login</button>
                         </div>
                     </form>
                     
