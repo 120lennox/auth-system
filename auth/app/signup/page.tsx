@@ -207,7 +207,7 @@ export default function signup() {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-cyan rounded-2xl py-1 cursor-pointer flex justify-center items-center">
+                        <div className="bg-cyan rounded-2xl py-1 cursor-pointer flex justify-center items-center hover:bg-cyan-500">
                             <button type="submit" className="py-1 text-white font-medium">Sign in</button>
                         </div>
                     </form>

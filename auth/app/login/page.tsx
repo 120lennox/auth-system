@@ -1,6 +1,45 @@
+'use client'
 import Link from "next/link"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+
 
 export default function login(){
+    const router = useRouter()
+
+    const [email_username, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    //error handling
+    const [emailError, setEmailError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+
+    const validateEmail = (email:string) =>{
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
+
+    //handle submission
+
+    const handleSubmission = async(e) =>{
+        e.preventDefault()
+
+        let isValid = true
+
+        if (!email_username.trim()){
+            setEmailError("Email/Username is required")
+            isValid = false
+        }
+
+        if (!password.trim()){
+            setPasswordError("Password is required")
+            isValid = false
+        }
+
+        if (isValid){
+            
+        }
+    }
+
     return <div>
         <div className="flex justify-center items-center h-screen text-sm mt-10 duration-300 ease-in-out">
             <div className="bg-white text-slate-800 shadow-lg w-[552] mx-h-[838] rounded-2xl">
