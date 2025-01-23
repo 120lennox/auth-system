@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 
 
 export default function login(){
@@ -36,7 +37,20 @@ export default function login(){
         }
 
         if (isValid){
-            
+            const userdata = {
+                username: email_username,
+                password: password
+            }
+
+            try{
+                const response = await axios.post('http://127.0.0.1:8000/api-auth/login/', userdata)
+                console.log(response.data)
+                if (response.status === 201){
+                    router.push('/')
+                }
+            }catch(error){
+                console.log(error)
+            }
         }
     }
 
